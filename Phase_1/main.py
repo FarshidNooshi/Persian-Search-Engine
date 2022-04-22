@@ -20,18 +20,16 @@ def read_file():
     return docs_url, docs_title, docs_content
 
 
-# coding: utf8
-
 default_stop_words = path.join(data_path, 'stopwords.dat')
 
 
 class StopWord:
     """ Class for remove stop words
 
-         >>> StopWord().clean(["بودی؟","مشهد","در","کی"])
-         ['بودی؟', 'مشهد', 'کی']
-         >>> StopWord(normal=True).clean(["بودی؟","مشهد","در","کی"])
-         ['بودی؟', 'مشهد']
+         >>> StopWord().clean(["در","تهران","کی","بودی؟"])
+         ['تهران', 'کی', 'بودی؟']
+         >>> StopWord(normal=True).clean(["در","تهران","کی","بودی؟"])
+         ['تهران', 'بودی؟']
 
          """
 
@@ -65,5 +63,3 @@ class StopWord:
             return filter(lambda item: not self[item], iterable_of_strings)
         else:
             return list(filter(lambda item: not self[item], iterable_of_strings))
-
-
