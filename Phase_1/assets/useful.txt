@@ -1,0 +1,18 @@
+def run_test():
+    print("to be or not to be")
+    to = {'indexes': {'123123123': {'positions': [7, 18, 33, 72, 86, 231]},
+                      '12312asDads23': {'positions': [1, 17, 74, 222, 255]},
+                      '1qwerqwerqwer23': {'positions': [8, 16, 190, 429, 433]},
+                      '12312312opi[poi3': {'positions': [363, 367]},
+                      '123123fdsfgdsf123': {'positions': [13, 23, 191]}}}
+    be = {'indexes': {'123123123': {'positions': [17, 25]},
+                      '1qwerqwerqwer23': {'positions': [17, 191, 291, 430, 434]},
+                      '12312312opi[poi3': {'positions': [14, 19, 101]}}}
+    print("to: ", to['indexes'])
+    print("be: ", be['indexes'])
+    print("merge result of \"to /1 be\": ", pos_intersect(to['indexes'], be['indexes'], 1))
+    print("merge result of \"be /3 to\": ", pos_intersect(be['indexes'], to['indexes'], 3))
+    print("merge result of \"to /5 be\": ", pos_intersect(to['indexes'], be['indexes'], 5))
+
+
+run_test()
