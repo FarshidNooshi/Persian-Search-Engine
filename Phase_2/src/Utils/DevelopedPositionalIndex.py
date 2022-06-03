@@ -4,11 +4,13 @@ from Phase_1.src.Utils.SimplePositionalIndex import SimplePositionalIndex
 
 
 class DevelopedPositionalIndex(SimplePositionalIndex):
-    def __init__(self, documents_url, documents_title, documents_content):
-        super().__init__(documents_url, documents_title, documents_content, False)
-        self.total_number_of_documents = len(documents_url)
+    def __init__(self, config):
+        super().__init__(config)
+        self.total_number_of_documents = len(self.Documents)
         self.document_term_tfidf_dictionary = {}
         self.build_updated_positional_index()
+        if config.get_config('champions_list'):
+            self.champions_list = self.build_champions_list()
 
     def build_updated_positional_index(self):
         for WORD in self.positional_index_structure.keys():
@@ -24,3 +26,6 @@ class DevelopedPositionalIndex(SimplePositionalIndex):
 
     def get_idf_value(self, word):
         return log(self.total_number_of_documents / len(self.positional_index_structure[word]['indexes']))
+
+    def build_champions_list(self):
+        return {}

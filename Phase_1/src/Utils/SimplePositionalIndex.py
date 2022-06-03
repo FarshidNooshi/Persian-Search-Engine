@@ -1,16 +1,14 @@
 from matplotlib import pyplot as plt
 
-from Phase_1.src.Utils.StopWord import Document
 from Phase_1.src.Utils.utilities import preprocess_pipeline, heaps_law
 
 
 class SimplePositionalIndex:
-    def __init__(self, documents_url, documents_title, documents_content, show=True):
-        self.Documents = [Document(documents_content[i], documents_url[i], documents_title[i]) for i in
-                          range(len(documents_url))]
+    def __init__(self, config):
+        self.Documents = config.get_config('documents')
         self.positional_index_structure = {}
         self.url_to_information = {}
-        self.show = show
+        self.show = config.get_config('show_heaps_law')
         self.build_positional_index()
         self.build_url_to_information_dict()
 

@@ -5,15 +5,17 @@ from Phase_1.src.Utils.utilities import preprocess_pipeline
 
 
 class QueryHandler:
-    def __init__(self, positional_index):
+    def __init__(self, positional_index, config):
         self.positional_index = positional_index
+        self.config = config
 
     def answer_query(self, query):
         query = preprocess_pipeline(query)
         terms = query.split()
         vector_values = self.tf_idf_calculate(terms)
         scores = self.calculate_scores(vector_values)
-        return dict(sorted(scores.items(), key=lambda item: item[1], reverse=True))
+        return dict(sorted(scores.items(), key=lambda item: item[1], reverse=True))[
+               :self.config.get_config('documents_to_show')]
 
     def tf_idf_calculate(self, terms):
         vector_values = {}
