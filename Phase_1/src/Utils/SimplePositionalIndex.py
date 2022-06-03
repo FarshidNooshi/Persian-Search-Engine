@@ -1,10 +1,10 @@
 from matplotlib import pyplot as plt
 
 from Phase_1.src.Utils.StopWord import Document
-from Phase_1.src.Utils.utilities import preprocess_pipeline, process_positions, heaps_law, generate_index
+from Phase_1.src.Utils.utilities import preprocess_pipeline, heaps_law
 
 
-class PositionalIndex:
+class SimplePositionalIndex:
     def __init__(self, documents_url, documents_title, documents_content, show=True):
         self.Documents = [Document(documents_content[i], documents_url[i], documents_title[i]) for i in
                           range(len(documents_url))]
@@ -53,6 +53,21 @@ class PositionalIndex:
         for document in self.Documents:
             self.url_to_information[document.url] = {"title": document.title,
                                                      "content": document.content}
+
+
+def process_positions(preprocessed_content):
+    positions = {}
+    for position_of_word, word in enumerate(preprocessed_content.split()):
+        if word and word not in positions:
+            positions[word] = []
+        positions[word].append(position_of_word)
+    return positions
+
+
+def generate_index(positions, title):
+    return {"number of occurrences in document": len(positions),
+            "positions": positions,
+            "title of document": title}
 
 
 def docID(number, lst_urls):

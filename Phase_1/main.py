@@ -1,14 +1,19 @@
 from __future__ import unicode_literals
 
-from Phase_1.src.Utils.PositionalIndex import PositionalIndex
 from Phase_1.src.Utils.QueryHandler import QueryHandler
+from Phase_1.src.Utils.SimplePositionalIndex import SimplePositionalIndex
 from Phase_1.src.Utils.utilities import read_file, print_results, zipf_law
+
+
+def test2():
+    print('test2')
+
 
 docs_url, docs_title, docs_content = read_file()
 
-pos_index = PositionalIndex(documents_url=docs_url, documents_title=docs_title, documents_content=docs_content)
+pos_index = SimplePositionalIndex(documents_url=docs_url, documents_title=docs_title, documents_content=docs_content)
 
-# pos2_index = PositionalIndex(documents_url=docs_url, documents_title=docs_title, documents_content=docs_content)
+# pos2_index = SimplePositionalIndex(documents_url=docs_url, documents_title=docs_title, documents_content=docs_content)
 # occurrences = [info['total occurrences'] for info in (pos2_index.positional_index_structure.values())]
 # zipf_law(occurrences, 'Zipf plot before stopwords removal')
 

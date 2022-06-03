@@ -1,4 +1,4 @@
-from Phase_1.src.Utils.PositionalIndex import pos_intersect
+from Phase_1.src.Utils.SimplePositionalIndex import pos_intersect
 from Phase_1.src.Utils.utilities import preprocess_pipeline
 
 

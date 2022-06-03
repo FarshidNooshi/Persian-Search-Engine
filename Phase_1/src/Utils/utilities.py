@@ -35,21 +35,6 @@ def preprocess_pipeline(content):
     return content
 
 
-def process_positions(preprocessed_content):
-    positions = {}
-    for position_of_word, word in enumerate(preprocessed_content.split()):
-        if word and word not in positions:
-            positions[word] = []
-        positions[word].append(position_of_word)
-    return positions
-
-
-def generate_index(positions, title):
-    return {"number of occurrences in document": len(positions),
-            "positions": positions,
-            "title of document": title}
-
-
 def heaps_law(dict_size, num_total_tokens, number):
     print(f'at {number}th document we seen {num_total_tokens} total tokens and dictionary size was {dict_size}')
 
