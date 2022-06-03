@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 import json
+import pickle
 
 from hazm import *
 
@@ -64,3 +65,19 @@ def zipf_law(frequencies, title):
     plt.ylabel('frequency')
     plt.plot(rs, fs, 'b-')
     plt.show()
+
+
+def save_index(configurations, pos_index):
+    with open(f'../{configurations.get_config("dump_path")}/updated_pos_index.pkl', 'w') as file_to_write:
+        pickle.dump(pos_index, file_to_write, pickle.HIGHEST_PROTOCOL)
+        print(f'saved index with name updated_pos_index.pkl')
+
+
+def load_index(configurations):
+    index = None
+    with open(f'../{configurations.get_config("dump_path")}/updated_pos_index.pkl', 'rb') as file_to_read:
+        index = pickle.load(file_to_read)
+    return index
+
+# save_index(config)
+# pos_index = load_index(config)

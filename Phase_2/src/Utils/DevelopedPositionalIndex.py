@@ -1,6 +1,9 @@
-from math import log
+import math
 
 from Phase_1.src.Utils.SimplePositionalIndex import SimplePositionalIndex
+from Phase_1.src.Utils.StopWord import Document
+from Phase_1.src.Utils.utilities import read_file
+from Phase_2.src.config import Config
 
 
 class DevelopedPositionalIndex(SimplePositionalIndex):
@@ -22,10 +25,10 @@ class DevelopedPositionalIndex(SimplePositionalIndex):
                     self.document_term_tfidf_dictionary[DOC_URL][WORD] = DICTIONARY['tf idf']
 
     def get_tf_value(self, word, url):
-        return log(1 + self.positional_index_structure[word]['indexes'][url]['number of occurrences in document'])
+        return math.log(1 + self.positional_index_structure[word]['indexes'][url]['number of occurrences in document'])
 
     def get_idf_value(self, word):
-        return log(self.total_number_of_documents / len(self.positional_index_structure[word]['indexes']))
+        return math.log(self.total_number_of_documents / len(self.positional_index_structure[word]['indexes']))
 
     def build_champions_list(self):
         champions_list = {}
@@ -38,3 +41,15 @@ class DevelopedPositionalIndex(SimplePositionalIndex):
             champions_list[WORD] = sorted(url_tf_dictionary, key=lambda item: item[1], reverse=True)[
                                    :champions_list_size]
         return champions_list
+
+
+config = Config()
+config.set_config('documents_path',
+                  '/Volumes/Farshid_SSD/Projects/University/information retrieval/Phase_1/assets/IR_data_news_12k.json')
+docs_url, docs_title, docs_content = read_file(config.get_config('documents_path'))
+
+config.set_config('documents',
+                  [Document(content, url, title) for url, title, content in zip(docs_url, docs_title, docs_content)])
+config.set_config('champions_list', True)
+
+pos_index = DevelopedPositionalIndex(config)

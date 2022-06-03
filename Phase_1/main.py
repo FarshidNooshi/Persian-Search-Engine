@@ -7,7 +7,9 @@ from Phase_1.src.Utils.utilities import read_file, print_results, zipf_law
 from Phase_2.src.config import Config
 
 config = Config()
-docs_url, docs_title, docs_content = read_file()
+config.set_config('documents_path',
+                  '/Volumes/Farshid_SSD/Projects/University/information retrieval/Phase_1/assets/IR_data_news_12k.json')
+docs_url, docs_title, docs_content = read_file(config.get_config('documents_path'))
 
 config.set_config('documents',
                   [Document(url, title, content) for url, title, content in zip(docs_url, docs_title, docs_content)])
@@ -30,7 +32,7 @@ query_handler = QueryHandler(positional_index=pos_index)
 
 # print_results('"خبرگزاری فارس"')
 
-print_results(query_handler.answer_query('"کنگره ضدتروریست "')[:config.get_config('documents_to_show')])
+print_results(query_handler.answer_query('انقلاب')[:config.get_config('documents_to_show')])
 
 # print_results('"مذاکرات وین" توضیحات ! برجام')
 
