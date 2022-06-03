@@ -7,6 +7,7 @@ class DevelopedPositionalIndex(SimplePositionalIndex):
     def __init__(self, documents_url, documents_title, documents_content):
         super().__init__(documents_url, documents_title, documents_content, False)
         self.total_number_of_documents = len(documents_url)
+        self.document_term_tfidf_dictionary = {}
         self.build_updated_positional_index()
 
     def build_updated_positional_index(self):
@@ -14,6 +15,10 @@ class DevelopedPositionalIndex(SimplePositionalIndex):
             number_of_unique_occurrences = len(self.positional_index_structure[WORD]['indexes'])
             for TERM_URL, DICTIONARY in self.positional_index_structure[WORD]['indexes'].items():
                 DICTIONARY['tf idf'] = self.get_tf_value(WORD, TERM_URL) * self.get_idf_value(WORD)
+                if TERM_URL not in self.document_term_tfidf_dictionary.keys():
+                    self.document_term_tfidf_dictionary[TERM_URL] = {WORD: DICTIONARY['tf idf']}
+                else:
+                    self.document_term_tfidf_dictionary[TERM_URL][WORD] = DICTIONARY['tf idf']
 
     def get_tf_value(self, word, url):
         return 1 + log(self.positional_index_structure[word]['indexes'][url]['number of occurrences in document'])
