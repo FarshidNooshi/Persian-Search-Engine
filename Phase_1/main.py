@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from Phase_1.src.Utils.PositionalIndex import PositionalIndex
 from Phase_1.src.Utils.QueryHandler import QueryHandler
-from Phase_1.src.utils import read_file, print_results, zipf_law
+from Phase_1.src.Utils.utilities import read_file, print_results, zipf_law
 
 docs_url, docs_title, docs_content = read_file()
 

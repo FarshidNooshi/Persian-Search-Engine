@@ -1,15 +1,16 @@
 from matplotlib import pyplot as plt
 
 from Phase_1.src.Utils.StopWord import Document
-from Phase_1.src.utils import preprocess_pipeline, process_positions, heaps_law, generate_index
+from Phase_1.src.Utils.utilities import preprocess_pipeline, process_positions, heaps_law, generate_index
 
 
 class PositionalIndex:
-    def __init__(self, documents_url, documents_title, documents_content):
+    def __init__(self, documents_url, documents_title, documents_content, show=True):
         self.Documents = [Document(documents_content[i], documents_url[i], documents_title[i]) for i in
                           range(len(documents_url))]
         self.positional_index_structure = {}
         self.url_to_information = {}
+        self.show = show
         self.build_positional_index()
         self.build_url_to_information_dict()
 
@@ -29,13 +30,15 @@ class PositionalIndex:
                 continue
             x.append(len(self.positional_index_structure.keys()))
             y.append(num_tokens)
-            heaps_law(dict_size=len(self.positional_index_structure.keys()), num_total_tokens=num_tokens, number=i)
-        heaps_law(dict_size=len(self.positional_index_structure.keys()), num_total_tokens=num_tokens,
-                  number=len(self.Documents))
-        plt.clf()
-        plt.title('With Stemming')
-        plt.plot(x, y, 'g-')
-        plt.show()
+            if self.show:
+                heaps_law(dict_size=len(self.positional_index_structure.keys()), num_total_tokens=num_tokens, number=i)
+        if self.show:
+            heaps_law(dict_size=len(self.positional_index_structure.keys()), num_total_tokens=num_tokens,
+                      number=len(self.Documents))
+            plt.clf()
+            plt.title('With Stemming')
+            plt.plot(x, y, 'g-')
+            plt.show()
 
     def add_index(self, word, positions, title, url):
         index_to_add = generate_index(positions, title)

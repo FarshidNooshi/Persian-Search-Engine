@@ -1,5 +1,5 @@
 from Phase_1.src.Utils.PositionalIndex import pos_intersect
-from Phase_1.src.utils import preprocess_pipeline
+from Phase_1.src.Utils.utilities import preprocess_pipeline
 
 
 class QueryHandler:
