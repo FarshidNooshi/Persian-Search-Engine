@@ -4,12 +4,12 @@ from Phase_1.src.Utils.SimplePositionalIndex import SimplePositionalIndex
 
 
 class DevelopedPositionalIndex(SimplePositionalIndex):
-    def __init__(self, config):
-        super().__init__(config)
+    def __init__(self, configurations):
+        super().__init__(configurations)
         self.total_number_of_documents = len(self.Documents)
         self.document_term_tfidf_dictionary = {}
         self.build_updated_positional_index()
-        if config.get_config('champions_list'):
+        if configurations.get_config('champions_list'):
             self.champions_list = self.build_champions_list()
 
     def build_updated_positional_index(self):

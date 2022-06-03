@@ -7,6 +7,7 @@ class Config:
             'documents': [],
             'show_heaps_law': False,
             'show_zipf_law': False,
+            'documents_path': 'Phase_1/assets/IR_data_news_12k.json',
         }
 
     def get_config(self, config_name):

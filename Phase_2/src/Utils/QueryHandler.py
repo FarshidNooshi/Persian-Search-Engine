@@ -12,13 +12,24 @@ class QueryHandler:
     def answer_query(self, query):
         query = preprocess_pipeline(query)
         terms = query.split()
-        if self.config.get_config('champions_list'):
+        if not self.config.get_config('champions_list'):
             vector_values = self.tf_idf_calculate_normal(terms)
         else:
             vector_values = self.tf_idf_calculate_champions(terms)
         scores = self.calculate_scores(vector_values)
-        return dict(sorted(scores.items(), key=lambda item: item[1], reverse=True))[
-               :self.config.get_config('documents_to_show')]
+        results_url = dict(sorted(scores.items(), key=lambda item: item[1], reverse=True)[
+                           :self.config.get_config('documents_to_show')])
+        total_results = self.generate_total_results(results_url)
+        return total_results
+
+    def generate_total_results(self, results_url):
+        total_results = []
+        for URL, SCORE in results_url.items():
+            result = self.positional_index.url_to_information[URL]
+            result['score'] = SCORE
+            result['url'] = URL
+            total_results.append(result)
+        return total_results
 
     def tf_idf_calculate_normal(self, terms):
         vector_values = {}
@@ -38,7 +49,7 @@ class QueryHandler:
         tf_values = Counter(terms)
         for term in terms:
             if term in self.positional_index.positional_index_structure.keys():
-                for DOC_URL in self.positional_index.chamions_list[term]:
+                for DOC_URL in self.positional_index.champions_list[term]:
                     if DOC_URL not in vector_values.keys():
                         vector_values[DOC_URL] = {}
                     vector_values[DOC_URL][term] = \

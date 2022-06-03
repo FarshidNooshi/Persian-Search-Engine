@@ -8,11 +8,11 @@ from hazm import *
 from Phase_1.src.Utils.StopWord import StopWord
 
 
-def read_file():
+def read_file(path='../Phase_1/assets/IR_data_news_12k.json'):
     documents_title = []
     documents_content = []
     documents_url = []
-    with open('../Phase_1/assets/IR_data_news_12k.json', encoding='UTF-8') as f:
+    with open(path, encoding='UTF-8') as f:
         data = json.load(f)
         for i in data:
             documents_title.append(data[i]["title"])
