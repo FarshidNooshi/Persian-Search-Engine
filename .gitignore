@@ -308,7 +308,7 @@ ehthumbs_vista.db
 # Dump file
 *.stackdump
 
-# Folder config file
+# Folder configurations file
 [Dd]esktop.ini
 
 # Recycle Bin used on file shares
@@ -527,7 +527,7 @@ PublishScripts/
 # except build/, which is used as an MSBuild target.
 !**/[Pp]ackages/build/
 # Uncomment if necessary however generally it will be regenerated when needed
-#!**/[Pp]ackages/repositories.config
+#!**/[Pp]ackages/repositories.configurations
 # NuGet v3's project.json files produces more ignorable files
 *.nuget.props
 *.nuget.targets
@@ -652,7 +652,7 @@ paket-files/
 
 # Cake - Uncomment if you are using it
 # tools/**
-# !tools/packages.config
+# !tools/packages.configurations
 
 # Tabs Studio
 *.tss

@@ -12,18 +12,33 @@ class QueryHandler:
     def answer_query(self, query):
         query = preprocess_pipeline(query)
         terms = query.split()
-        vector_values = self.tf_idf_calculate(terms)
+        if self.config.get_config('champions_list'):
+            vector_values = self.tf_idf_calculate_normal(terms)
+        else:
+            vector_values = self.tf_idf_calculate_champions(terms)
         scores = self.calculate_scores(vector_values)
         return dict(sorted(scores.items(), key=lambda item: item[1], reverse=True))[
                :self.config.get_config('documents_to_show')]
 
-    def tf_idf_calculate(self, terms):
+    def tf_idf_calculate_normal(self, terms):
         vector_values = {}
         tf_values = Counter(terms)
         for term in terms:
             positional_index_structure = self.positional_index.positional_index_structure
             if term in positional_index_structure.keys():
                 for DOC_URL in positional_index_structure[term]['indexes'].keys():
+                    if DOC_URL not in vector_values.keys():
+                        vector_values[DOC_URL] = {}
+                    vector_values[DOC_URL][term] = \
+                        (1 + log(tf_values[term])) * self.positional_index.get_idf_value(term)
+        return vector_values
+
+    def tf_idf_calculate_champions(self, terms):
+        vector_values = {}
+        tf_values = Counter(terms)
+        for term in terms:
+            if term in self.positional_index.positional_index_structure.keys():
+                for DOC_URL in self.positional_index.chamions_list[term]:
                     if DOC_URL not in vector_values.keys():
                         vector_values[DOC_URL] = {}
                     vector_values[DOC_URL][term] = \

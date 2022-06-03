@@ -28,4 +28,11 @@ class DevelopedPositionalIndex(SimplePositionalIndex):
         return log(self.total_number_of_documents / len(self.positional_index_structure[word]['indexes']))
 
     def build_champions_list(self):
-        return {}
+        champions_list = {}
+        for WORD in self.positional_index_structure.keys():
+            url_tf_dictionary = {}
+            for DOC_URL, DICTIONARY in self.positional_index_structure[WORD]['indexes'].items():
+                url_tf_dictionary[DOC_URL] = self.get_tf_value(WORD, DOC_URL)
+            champions_list[WORD] = sorted(url_tf_dictionary, key=lambda item: item[1], reverse=True)[
+                                   :self.config.get_config('champions_list_size')]
+        return champions_list

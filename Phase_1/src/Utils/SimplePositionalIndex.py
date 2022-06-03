@@ -5,6 +5,7 @@ from Phase_1.src.Utils.utilities import preprocess_pipeline, heaps_law
 
 class SimplePositionalIndex:
     def __init__(self, config):
+        self.config = config
         self.Documents = config.get_config('documents')
         self.positional_index_structure = {}
         self.url_to_information = {}
