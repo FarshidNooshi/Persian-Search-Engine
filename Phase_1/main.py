@@ -30,7 +30,7 @@ query_handler = QueryHandler(positional_index=pos_index)
 
 # print_results('"خبرگزاری فارس"')
 
-print_results(query_handler, '"کنگره ضدتروریست "')
+print_results(query_handler.answer_query('"کنگره ضدتروریست "')[:config.get_config('documents_to_show')])
 
 # print_results('"مذاکرات وین" توضیحات ! برجام')
 

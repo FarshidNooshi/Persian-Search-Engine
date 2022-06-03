@@ -39,8 +39,8 @@ def heaps_law(dict_size, num_total_tokens, number):
     print(f'at {number}th document we seen {num_total_tokens} total tokens and dictionary size was {dict_size}')
 
 
-def print_results(query_handler, query_string, number_to_prints=10):
-    for single_result in query_handler.answer_query(query_string)[:number_to_prints]:
+def print_results(results):
+    for single_result in results:
         print(f"score: {single_result['score']},\n"
               f"url: {single_result['url']},\n"
               f"title: {single_result['title']}\n"

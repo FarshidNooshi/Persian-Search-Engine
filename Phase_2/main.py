@@ -1,5 +1,5 @@
 from Phase_1.src.Utils.StopWord import Document
-from Phase_1.src.Utils.utilities import read_file
+from Phase_1.src.Utils.utilities import read_file, print_results
 from Phase_2.src.Utils.DevelopedPositionalIndex import DevelopedPositionalIndex
 from Phase_2.src.Utils.QueryHandler import QueryHandler
 from Phase_2.src.config import Config
@@ -12,11 +12,8 @@ config.set_config('documents',
 
 pos_index = DevelopedPositionalIndex(config)
 
-for word in pos_index.positional_index_structure.keys():
-    for doc_url, dictionary in pos_index.positional_index_structure[word]['indexes'].items():
-        print(dictionary['tf idf'])
 
 query_handler = QueryHandler(pos_index, config)
-print(query_handler.answer_query('انقلاب اسلامی ایران'))
-print(query_handler.answer_query('انقلاب'))
+# print(query_handler.answer_query('انقلاب اسلامی ایران'))
+print_results(query_handler.answer_query('انقلاب'))
 

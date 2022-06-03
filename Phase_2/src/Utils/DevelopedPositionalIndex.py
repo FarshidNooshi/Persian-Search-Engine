@@ -22,7 +22,7 @@ class DevelopedPositionalIndex(SimplePositionalIndex):
                     self.document_term_tfidf_dictionary[DOC_URL][WORD] = DICTIONARY['tf idf']
 
     def get_tf_value(self, word, url):
-        return 1 + log(self.positional_index_structure[word]['indexes'][url]['number of occurrences in document'])
+        return log(1 + self.positional_index_structure[word]['indexes'][url]['number of occurrences in document'])
 
     def get_idf_value(self, word):
         return log(self.total_number_of_documents / len(self.positional_index_structure[word]['indexes']))
@@ -33,6 +33,8 @@ class DevelopedPositionalIndex(SimplePositionalIndex):
             url_tf_dictionary = {}
             for DOC_URL, DICTIONARY in self.positional_index_structure[WORD]['indexes'].items():
                 url_tf_dictionary[DOC_URL] = self.get_tf_value(WORD, DOC_URL)
+            champions_list_size = int(
+                self.config.get_config('champions_lists_ratio') * len(self.positional_index_structure[WORD]['indexes']))
             champions_list[WORD] = sorted(url_tf_dictionary, key=lambda item: item[1], reverse=True)[
-                                   :self.config.get_config('champions_list_size')]
+                                   :champions_list_size]
         return champions_list
