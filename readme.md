@@ -3,7 +3,7 @@
 </div>
 
 # information retrieval
-Amirkabir University of Technology- Cmputer Engineering department- Information Retrieval
+Amirkabir University of Technology- Computer Engineering department- Information Retrieval
 
 ## TODO
  update the readme
