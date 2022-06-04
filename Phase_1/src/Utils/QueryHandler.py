@@ -3,11 +3,16 @@ from Phase_1.src.Utils.utilities import preprocess_pipeline
 
 
 class QueryHandler:
-    def __init__(self, positional_index):
+    def __init__(self, positional_index, config):
         self.positional_index = positional_index
+        self.config = config
+
+    def preprocess_query(self, query):
+        query = calc_string(query)
+        return preprocess_pipeline(query, self.config)
 
     def answer_query(self, query):
-        query = preprocess_query(query)
+        query = self.preprocess_query(query)
         not_queries = []
         and_queries = []
         empty_str = ' '
@@ -33,14 +38,14 @@ class QueryHandler:
                     break
                 continue
             elif substr[0] == '<':
-                word = preprocess_pipeline(substr[1:])
+                word = preprocess_pipeline(substr[1:], self.config)
                 if word:
                     consecutive.append(word)
                 i = next_occur + 1
                 is_consecutive = True
                 continue
             elif substr[-1] == '>':
-                word = preprocess_pipeline(substr[:-1])
+                word = preprocess_pipeline(substr[:-1], self.config)
                 if word:
                     consecutive.append(word)
                 and_queries.append(self.get_result(consecutive))
@@ -119,8 +124,3 @@ def calc_string(string):
             string = string[:i - 1] + ' _NOT_ ' + string[i + 1:]
         i += 1
     return string
-
-
-def preprocess_query(query):
-    query = calc_string(query)
-    return preprocess_pipeline(query)

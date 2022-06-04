@@ -1,7 +1,7 @@
 from Phase_1.src.Utils.StopWord import Document
 from Phase_1.src.Utils.utilities import read_file, print_results
-from Phase_2.all_codes import QueryHandler
 from Phase_2.src.Utils.DevelopedPositionalIndex import DevelopedPositionalIndex
+from Phase_2.src.Utils.QueryHandler import QueryHandler
 from Phase_2.src.config import Config
 
 config = Config()

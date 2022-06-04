@@ -4,8 +4,7 @@ from __future__ import unicode_literals
 import json
 import pickle
 
-from hazm import *
-
+from parsivar import Normalizer, Tokenizer, FindStems
 from Phase_1.src.Utils.StopWord import StopWord
 
 
@@ -25,14 +24,17 @@ def read_file(path='../Phase_1/assets/IR_data_news_12k.json'):
 normalizer = Normalizer()
 
 
-def preprocess_pipeline(content):
+def preprocess_pipeline(content, configurations):
     str_empty = ' '
-    stemmer = Stemmer()
-    content = normalizer.normalize(content)
-    content = word_tokenize(content)
-    content = StopWord(normal=False).clean(content)
-    content = [stemmer.stem(word) for word in content]
-    content = str_empty.join(content)
+    stemmer = FindStems()
+    tokenizer = Tokenizer()
+    normalized = normalizer.normalize(content)
+    result = tokenizer.tokenize_words(normalized)
+    if configurations.get_config('do_stemming'):
+        result = list(map(stemmer.convert_to_stem, result))
+    if configurations.get_config('remove_stop_words'):
+        result = StopWord(normal=False).clean(content)
+    result = str_empty.join(content)
     return content
 
 

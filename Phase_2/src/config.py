@@ -9,6 +9,8 @@ class Config:
             'show_zipf_law': False,
             'documents_path': 'Phase_1/assets/IR_data_news_12k.json',
             'dump_path': 'Phase_2/assets/',
+            'remove_stop_words': True,
+            'do_stemming': True,
         }
 
     def get_config(self, config_name):

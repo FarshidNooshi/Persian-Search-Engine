@@ -10,7 +10,7 @@ class QueryHandler:
         self.config = config
 
     def answer_query(self, query):
-        query = preprocess_pipeline(query)
+        query = preprocess_pipeline(query, self.config)
         print(f'Query: {query}\n\n\n')
         terms = query.split()
         vector_values = self.tf_idf_calculate(terms, self.config.get_config('champions_list'))

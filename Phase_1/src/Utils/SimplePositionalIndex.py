@@ -18,7 +18,7 @@ class SimplePositionalIndex:
         x = []
         y = []
         for i, document in enumerate(self.Documents):
-            preprocessed_content = preprocess_pipeline(document.content)
+            preprocessed_content = preprocess_pipeline(document.content, self.config)
             processed_content = process_positions(preprocessed_content)
             title_of_document = document.title
             url = document.url
