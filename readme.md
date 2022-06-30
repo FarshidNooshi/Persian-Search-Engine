@@ -2,8 +2,8 @@
     <h1>In The Name of GOD</h1>
 </div>
 
-# information retrieval
+# Information Retrieval
 Amirkabir University of Technology- Computer Engineering department- Information Retrieval
 
-## TODO
- update the readme
+# Introduction
+ to be added.
