@@ -1,0 +1,15 @@
+volumes:
+  data:
+
+services:
+  elasticsearch:
+    image: elasticsearch:8.2.0
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+    ports:
+      - 9200:9200
+    volumes:
+      - data:/usr/share/elasticsearch/data
+  myapp:
+    image: some-image
