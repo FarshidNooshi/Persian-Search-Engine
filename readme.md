@@ -12,10 +12,10 @@ Information retrieval is the process through which a computer system can respond
 
 This repository is for my Information Retrieval course project at the Amirkabir University of Technology and contains the following files:
 
-- Phase1.md: the first phase of the project.
-- Phase2.md: the second phase of the project.
-- Phase3.md: the third phase of the project.
-- notebooks.md: the notebooks for the project.
+- [Phase1.md](Phase_1): the first phase of the project.
+- [Phase2.md](Phase_2): the second phase of the project.
+- [Phase3.md](Phase_3): the third phase of the project.
+- [notebooks.md](notebooks): the notebooks for the project.
 
 The topics in this course are:
 
