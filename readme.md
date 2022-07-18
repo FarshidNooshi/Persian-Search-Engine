@@ -19,6 +19,8 @@ This repository is for my Information Retrieval course project at the Amirkabir 
 - [Phase3.md](Phase_3): the third phase of the project.
 - [notebooks.md](notebooks): the notebooks for the project.
 
+## Topics 
+
 The topics in this course are:
 
 - **Text Preprocessing and vocabulary construction**
