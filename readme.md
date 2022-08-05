@@ -2,11 +2,15 @@
 <h1> In The Name Of GOD </h1>
 </div>
 
-# Information Retrieval
+# Persina Search Engine
 [![License: APACHE-2.0](https://img.shields.io/github/license/FarshidNooshi/Information-Retrieval)](https://opensource.org/licenses/Apache-2.0)
 ![GitHub contributors](https://img.shields.io/github/contributors/FarshidNooshi/Information-retrieval)
 
 # Introduction
+
+This Project is For my Information Retrieval Course Project which was three phases and has various techniques in information retrieval such as TF-IDF scoring, Clusterring techniques and ... . below is a brief introduction to this course.
+
+# Information Retrieval
 
 Information retrieval is the process through which a computer system can respond to a user's query for text-based information on a specific topic. Web search is one of the most important applications of information retrieval techniques and an area in which most people interact with IR systems. The goal of this course is to introduce students with the basics, models, tools and applications of the modern information retrieval.
 
