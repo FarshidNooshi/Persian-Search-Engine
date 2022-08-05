@@ -6,9 +6,30 @@
 [![License: APACHE-2.0](https://img.shields.io/github/license/FarshidNooshi/Information-Retrieval)](https://opensource.org/licenses/Apache-2.0)
 ![GitHub contributors](https://img.shields.io/github/contributors/FarshidNooshi/Information-retrieval)
 
-# Introduction
+# About The Project
 
 This Project is For my Information Retrieval Course Project which was three phases and has various techniques in information retrieval such as TF-IDF scoring, Clusterring techniques and ... . below is a brief introduction to this course.
+
+# Preprocessing Section
+
+For all query answering approaches, we need a positional posting list which is extracted in Phase 1 section
+Also for word embedding purposes, a word to vector model is constructed.
+
+# Categorization
+
+In order to answer queries fast enough, we need to categorize documents and queries. 
+In third section a **KNN** Approach is implemented
+In third section an unsupervised approach is implemented using the **K-means algorithm**.
+
+# Query answering
+
+Multiple query answering approaches are implemented:
++ Simple common word counting approach in Phase 1 and 2.
++ An approach based on inner product and tf-idf in Phase 2 which uses champion lists in order to speed up.
++ A word embedding-based approach with inner product criteria in Phase 1.
++ A fast version of the word embedding approach in Phase 2 which uses clusters in order to speed up.
++ A category aware approach in Phase 3 that user enters the category along with the query itself.
++ Bulk inserting data to the ElasticSearch and using ElasticSearch as another solution for using in products in Phase 3.
 
 # Information Retrieval
 
