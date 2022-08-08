@@ -31,6 +31,8 @@ Multiple query answering approaches are implemented:
 + A category aware approach in Phase 3 that user enters the category along with the query itself.
 + Bulk inserting data to the ElasticSearch and using ElasticSearch as another solution for using in products in Phase 3.
 
+---
+
 # Information Retrieval
 
 Information retrieval is the process through which a computer system can respond to a user's query for text-based information on a specific topic. Web search is one of the most important applications of information retrieval techniques and an area in which most people interact with IR systems. The goal of this course is to introduce students with the basics, models, tools and applications of the modern information retrieval.
