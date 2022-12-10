@@ -72,7 +72,7 @@ The topics in this course are:
 # Instructor
 
 The Information Retrieval course in Spring 2022 at the Computer Engineering Department in Amirkabir University of Technology is taught by:
-[**Prof. Ahmad Nickabadi**](https://scholar.google.com/citations?user=pSMNSZwAAAAJ&hl=en)
+[**Assoc. Prof. Ahmad Nickabadi**](https://scholar.google.com/citations?user=pSMNSZwAAAAJ&hl=en)
 
 # Textbook
 
