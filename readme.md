@@ -2,7 +2,7 @@
 <h1> In The Name Of GOD </h1>
 </div>
 
-# Persina Search Engine
+# Persian Search Engine
 [![License: APACHE-2.0](https://img.shields.io/github/license/FarshidNooshi/Information-Retrieval)](https://opensource.org/licenses/Apache-2.0)
 ![GitHub contributors](https://img.shields.io/github/contributors/FarshidNooshi/Information-retrieval)
 
